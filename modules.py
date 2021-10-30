@@ -10,7 +10,7 @@ import asyncio
 #reddit login credentials
 reddit = asyncpraw.Reddit(client_id=os.getenv("clientid"),
                           client_secret=os.getenv("secret"),
-                          username="TheMayMayMakers",
+                          username="",
                           password=os.getenv("password"),
                           user_agent=os.getenv("agent"))
 
