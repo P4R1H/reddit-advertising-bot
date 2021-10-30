@@ -27,7 +27,7 @@ You can use this script to advertise anything, this was originally intended to b
 
 bot dms 15 people in `new` by default, if you want to change this, find the `advertisenew` function call in `main.py` and change the `15` in there to the amount of people you want to dm in new, amount of people dmd in hot already specified by you in `config.json`.
 
-Reddit bans account for mass dming, though that only happens rarely and only if a user reports the bot, so try to make your advertisement not annoying.
+Reddit bans account for mass dming, though that only happens rarely and only if a user reports the bot, so try not to make your advertisement too annoying.
 
  
  
