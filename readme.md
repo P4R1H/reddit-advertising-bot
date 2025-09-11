@@ -16,7 +16,7 @@ You can use this script to advertise anything, this was originally intended to b
 
 1) Add your reddit bot account's credentials and discord bot token as envs
 
-2) go to `config.json`, and fill in the subreddits you want to advertise in, along with the limit of posts you want it to go through for that particular subreddit. generally if the sub gets a lot of posts, put the limit around 25-35, otherwise around 10-15
+2) rename `config.example.json` to `config.json`. go to `config.json`, and fill in the subreddits you want to advertise in, along with the limit of posts you want it to go through for that particular subreddit. generally if the sub gets a lot of posts, put the limit around 25-35, otherwise around 10-15
 
 3) find the `channelid` key in `config.json` and enter the discord channel's id where you want the bot to log all the people it has dmd on reddit
 

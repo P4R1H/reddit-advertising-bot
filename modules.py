@@ -1,11 +1,18 @@
 #importing directories
 import discord
 from discord.ext import commands
-from replit import db
+# from replit import db
 import asyncpraw
 import os
 import asyncio
+import db as mdb
+import json
 
+
+# right now is a mix of config and env, ideally would move all to env or config.
+f= open("config.json","r")
+settings = json.load(f)
+f.close()
 
 #reddit login credentials
 reddit = asyncpraw.Reddit(client_id=os.getenv("clientid"),
@@ -17,7 +24,6 @@ reddit = asyncpraw.Reddit(client_id=os.getenv("clientid"),
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix='-', intents=intents)
-
 
 #modules
 async def advertisehot(ctx, subreddit, lim, title, content):
@@ -32,15 +38,18 @@ async def advertisehot(ctx, subreddit, lim, title, content):
         print(f"starting {subreddit}")
         
         try:
-
-            if submission.author.name.lower() in db["dmd"]:
+            dbuser = await mdb.user_find(submission.author.name.lower())
+            if dbuser and settings["current_camp"] in dbuser["camps"]:
                 print(submission.author.name,
                       ": found in the dm log, going to next user")
                 continue
             else:
                 print(submission.author.name, ": didnt find in the dm log")
 
-                db["dmd"] = db["dmd"] + "," + submission.author.name.lower()
+
+                # add user here
+                # would use update_user here since we are checking camps.
+                await mdb.update_user(submission.author.name.lower())
 
                 print("written in the dm log")
 
@@ -53,9 +62,9 @@ async def advertisehot(ctx, subreddit, lim, title, content):
                 await asyncio.sleep(45)
           
         except:
-          print(f"{submission.author.name} probably has dms off, not added to dm log")
-          await ctx.send(f"Couldnt dm {submission.author.name}, they probably have dms off")
-          continue
+            print(f"{submission.author.name} probably has dms off, not added to dm log")
+            await ctx.send(f"Couldnt dm {submission.author.name}, they probably have dms off")
+            continue
 
 
 
@@ -73,16 +82,16 @@ async def advertisenew(ctx, subreddit, lim, title, content):
         print(f"starting {subreddit}")
         
         try:
-
-            if submission.author.name.lower() in db["dmd"]:
+            dbuser = await mdb.user_find(submission.author.name.lower())
+            if dbuser and settings["current_camp"] in dbuser["camps"]:
                 print(submission.author.name,
                       ": found in the dm log, going to next user")
                 continue
             else:
                 print(submission.author.name, ": didnt find in the dm log")
 
-                db["dmd"] = db["dmd"] + "," + submission.author.name.lower()
-
+                await mdb.update_user(submission.author.name.lower())
+                
                 print("written in the dm log")
 
                 tuser = await reddit.redditor(submission.author.name)
@@ -94,6 +103,6 @@ async def advertisenew(ctx, subreddit, lim, title, content):
                 await asyncio.sleep(45)
           
         except:
-          print(f"{submission.author.name} probably has dms off, not added to dm log")
-          await ctx.send(f"Couldnt dm {submission.author.name}, they probably have dms off")
-          continue          
+            print(f"{submission.author.name} probably has dms off, not added to dm log")
+            await ctx.send(f"Couldnt dm {submission.author.name}, they probably have dms off")
+            continue          
