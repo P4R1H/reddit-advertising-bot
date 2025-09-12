@@ -14,12 +14,16 @@ f= open("config.json","r")
 settings = json.load(f)
 f.close()
 
-#reddit login credentials
-reddit = asyncpraw.Reddit(client_id=os.getenv("clientid"),
-                          client_secret=os.getenv("secret"),
-                          username="",
-                          password=os.getenv("password"),
-                          user_agent=os.getenv("agent"))
+
+
+async def login():
+    #reddit login credentials
+    global reddit
+    reddit = asyncpraw.Reddit(client_id=settings["clientid"],
+                            client_secret=settings["secret"],
+                            username=settings["username"],
+                            password=settings["password"],
+                            user_agent=settings["agent"])
 
 
 intents = discord.Intents.all()

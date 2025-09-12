@@ -8,6 +8,12 @@
 "channelid" : channelid,
 "cluster_name": x,
 "mongo_link": y,
-"current_camp": z
+"current_camp": z,
+"token": discord_token,
+"secret": reddit_client_secret,
+"clientid": reddit_clientid,
+"password": reddit_password,
+"username": reddit_username,
+"agent": useragent
 }
 
