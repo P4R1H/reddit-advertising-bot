@@ -32,7 +32,7 @@ async def insert_user(username: str):
 async def update_user(username: str):
     user_data = await user_find(username)
     if not user_data:
-        insert_user(username)
+        await insert_user(username)
     elif settings["current_camp"] not in user_data["camps"]:
         collection.update_one({"username": username} , {"$set": {"username":username, "camps": user_data["camps"].append(settings["current_camp"])}})
     else:
