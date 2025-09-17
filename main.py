@@ -28,6 +28,7 @@ async def advertise():
 
 
 async def main():
+    await login()
     adv_task = asyncio.create_task(advertise())
     await adv_task
 
