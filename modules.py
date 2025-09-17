@@ -61,7 +61,8 @@ async def advertisehot(subreddit, lim, title, content):
                     f"{submission.author.name} has been dmd an invite")                          
                 await asyncio.sleep(45)
           
-        except:
+        except Exception as e:
+            await logger.log_warning(e)
             await logger.log_info(f"{submission.author.name} probably has dms off, not added to dm log")
             await logger.log_warning(f"Couldnt dm {submission.author.name}, they probably have dms off")
             continue
