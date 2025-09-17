@@ -40,11 +40,11 @@ async def advertisehot(subreddit, lim, title, content):
         try:
             dbuser = await mdb.user_find(submission.author.name.lower())
             if dbuser and os.getenv("current_camp") in dbuser["camps"]:
-                await logger.log_info(submission.author.name,
+                await logger.log_info(submission.author.name +
                       ": found in the dm log, going to next user")
                 continue
             else:
-                await logger.log_info(submission.author.name, ": didnt find in the dm log")
+                await logger.log_info(submission.author.name + ": didnt find in the dm log")
 
 
                 # add user here
@@ -85,11 +85,11 @@ async def advertisenew(subreddit, lim, title, content):
         try:
             dbuser = await mdb.user_find(submission.author.name.lower())
             if dbuser and os.getenv("current_camp") in dbuser["camps"]:
-                await logger.log_info(submission.author.name,
+                await logger.log_info(submission.author.name +
                       ": found in the dm log, going to next user")
                 continue
             else:
-                await logger.log_info(submission.author.name, ": didnt find in the dm log")
+                await logger.log_info(submission.author.name + ": didnt find in the dm log")
 
                 await mdb.update_user(submission.author.name.lower())
                 

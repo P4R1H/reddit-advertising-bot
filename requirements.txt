@@ -1,4 +1,4 @@
-pymongo[srv]
+pymongo[srv]==3.12
 discord.py
 flask
 asyncpraw
