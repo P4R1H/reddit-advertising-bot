@@ -6,13 +6,9 @@ from pymongo.server_api import ServerApi
 import os
 import time
 import json
-from pymongo.common import TLSVersion
 
-cluster = MongoClient(os.getenv("mongo_link"),
-    tls=True,
-    tlsAllowInvalidCertificates=False,
-    tlsVersion=TLSVersion.TLS_1_2
-)
+
+cluster = MongoClient(os.getenv("mongo_link"), server_api=ServerApi('1'))
 db = cluster[os.getenv("cluster_name")]
 collection = db['users-dmd']
 
