@@ -22,6 +22,7 @@ You can use this script to advertise anything, this was originally intended to b
 
 4) find the `dmcontent` and `dmtitle` in `config.json` and fill them accordingly to what u want the bot to advertise
 
+5) save subreddits to go through as "sub1:limit , sub2:limit , sub3:limit" ...... in the .env
 
 # `> Notes`
 

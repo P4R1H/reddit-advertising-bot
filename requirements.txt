@@ -3,3 +3,5 @@ discord.py
 flask
 asyncpraw
 dnspython
+logging
+asyncio
