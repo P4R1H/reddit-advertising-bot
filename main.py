@@ -28,6 +28,7 @@ async def advertise():
 
 
 async def main():
+    keep_alive()
     await login()
     adv_task = asyncio.create_task(advertise())
     await adv_task
@@ -49,4 +50,4 @@ async def before_advertise():
 
 
 #running bot
-keep_alive() # remove later unless using uptimerbot
+# keep_alive() # remove later unless using uptimerbot
