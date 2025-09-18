@@ -60,7 +60,7 @@ async def advertisehot(subreddit, lim, title, content):
 
                     tuser = await reddit.redditor(submission.author.name)
 
-                    await tuser.message(title,content)
+                    await tuser.message(content)
 
                     await logger.log_info(
                         f"{submission.author.name} has been dmd an invite")                          
@@ -100,7 +100,7 @@ async def advertisehot(subreddit, lim, title, content):
                     await logger.log_info("written in the dm log")
 
                     tuser = await reddit.redditor(comment.author.name)
-                    await tuser.message(title, content)
+                    await tuser.message(content)
 
                     await logger.log_info(
                         f"{comment.author.name} has been dmd an invite")
@@ -150,7 +150,7 @@ async def advertisenew(subreddit, lim, title, content):
 
                     tuser = await reddit.redditor(submission.author.name)
 
-                    await tuser.message(title, content)
+                    await tuser.message(content)
 
                     await logger.log_info(
                         f"{submission.author.name} has been dmd an invite")                          

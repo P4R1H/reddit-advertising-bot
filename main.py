@@ -8,8 +8,8 @@ import logger
 
 
 dmcontent = os.getenv("dmcontent")
-# dmtitle = os.getenv("dmtitle")
-dmtitle = " "
+dmtitle = os.getenv("dmtitle")
+
 subreddits = {}
 
 for c in os.getenv("subreddits").split(" , "):
