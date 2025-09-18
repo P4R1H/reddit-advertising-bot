@@ -79,7 +79,7 @@ async def advertisehot(subreddit, lim, title, content):
                 submission.comments.list(),
                 key=lambda c: c.score if c.author else 0,
                 reverse=True
-            )[:15] # only top 15 here, inc/dec as needed.
+            )[:10] # only top 15 here, inc/dec as needed.
 
             for comment in comments:
                 if not comment.author:

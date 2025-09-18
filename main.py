@@ -23,7 +23,7 @@ async def advertise():
         await asyncio.sleep(3600)
 
         for sub in subreddits:
-            await advertisenew(sub, 15, dmtitle, dmcontent)
+            await advertisenew(sub, 10, dmtitle, dmcontent)
         await asyncio.sleep(3600)
 
 
